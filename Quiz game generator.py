@@ -168,13 +168,13 @@ def save_scores(scores):
 
 
 def load_highest_scores():
-    if os.path.exists(FILENAME):
-        return {}
+    if not os.path.exists(FILENAME):
+        {}
     try:
         with open(FILENAME, "r") as file:
             return json.load(file)
 
-    except FileNotFoundError, JSONDecodeError:
+    except (FileNotFoundError, JSONDecodeError):
         return {}
 
 #QUIZ GAME MENU
@@ -190,7 +190,6 @@ def subject_menu():
 #MAIN GAME DATA
 def quiz_data():
     all_scores=load_highest_scores()
-    print(f"Your highest score is {load_highest_scores()}:")
 
     all_scores = load_highest_scores()
     print("---- High score board----".upper().center(50,"-"))
@@ -200,7 +199,7 @@ def quiz_data():
 
     while True:
         subject_menu()
-        choice= input("\nPick a quiz subject (1-4: ")
+        choice= input("\nPick a quiz subject (1-4): ")
 
         if choice == "1":
             current_score=run_quiz("General Knowledge", general_knowledge)
