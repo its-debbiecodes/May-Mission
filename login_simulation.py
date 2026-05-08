@@ -18,14 +18,14 @@ while True:
             break
 
         if attempts <= 0:
-            print("Number of attempts exceeded")
+            print("access denied ❌ \nNumber of attempts exceeded")
 
         else:
             print("access denied ❌ \nwrong username or password")
             print(f"\nYou have {attempts} attempts left")
             continue
 
-    if logged_in == True:
+    if logged_in:
         break
 
     try_again = input("\nDo you want to try again? (y/n): ")
